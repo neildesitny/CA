@@ -1,3 +1,7 @@
+# Makefile for CA Model-- Forest fire model
+# To build program, just type 'make' in terminal
+# To clean, type 'make clean'
+
 CC		=			gcc
 TAG		=			-std=c99 -o
 TAGC	=			-std=c99 -c

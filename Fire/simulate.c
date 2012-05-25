@@ -30,6 +30,7 @@ void simulate(int width, int height, double probability, double prob_to_tree, do
 		//update the map
 		update_map(map, new_map, width, height, prob_to_tree, prob_lightning);
 		
+		//a function to control the simulation speed by modifing the parameter
 		usleep(100000);
 	}
 }
