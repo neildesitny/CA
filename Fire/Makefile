@@ -28,6 +28,7 @@ plot.o: plot.c fire.h
 simulate.o: simulate.c fire.h
 	$(CC) simulate.c fire.h $(TAGC)
 
+# Not sure which way is better
 #install:
 #	mkdir Library; mv *.o fire.h.gch Library/
 
