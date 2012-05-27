@@ -5,12 +5,19 @@
 #include "fire.h"
 
 void simulate(int width, int height, double probability, double prob_to_tree, double prob_lightning){
+
 	// a map with width*height sites
 	int** map =(int**) malloc(width*sizeof(int*));
 	int** new_map = (int**)malloc(width*sizeof(int*));
 
 	FILE* pipe = popen("gnuplot -persist","w");	
+
+	if(!pipe){
+		printf("error happened during opening gnuplot\n");
+		exit(1);
+	}
 	
+	// load configuration for gnuplot
 	fprintf(pipe, "load 'set.gp'\n");
 	
 	for(int i=0;i<width;i++){
@@ -21,8 +28,7 @@ void simulate(int width, int height, double probability, double prob_to_tree, do
 	//initialize tha map before simulation
 	init_map(map, new_map, width, height, probability);
 	
-	//if prob_lightning = 0, then set a fire int the centre 
-	//of the map
+	//if prob_lightning = 0, then set a fire in the centre of the map
 	if(prob_lightning == 0.0){
 		for(int i=0;i<3;i++){
 			for(int j=0;j<3;j++){
@@ -41,6 +47,6 @@ void simulate(int width, int height, double probability, double prob_to_tree, do
 		update_map(map, new_map, width, height, prob_to_tree, prob_lightning);
 		
 		//a function to control the simulation speed by modifing the parameter
-		usleep(100000);
+		usleep(1000000);
 	}
 }
