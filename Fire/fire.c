@@ -18,6 +18,8 @@ int main(int argc, char** argv){
 		prob_lightning = atof(argv[5]);		
 	}
 
+	srand(time(NULL));
+
 	// start to running the simulation
 	simulate(width,height,probability,prob_to_tree,prob_lightning);
 	
