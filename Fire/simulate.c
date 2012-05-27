@@ -21,6 +21,16 @@ void simulate(int width, int height, double probability, double prob_to_tree, do
 	//initialize tha map before simulation
 	init_map(map, new_map, width, height, probability);
 	
+	//if prob_lightning = 0, then set a fire int the centre 
+	//of the map
+	if(prob_lightning == 0.0){
+		for(int i=0;i<3;i++){
+			for(int j=0;j<3;j++){
+				map[width/2+i][height/2+j] = burning;
+			}
+		}
+	}
+	
 	//simulation display starts here
 	while(true){
 		
