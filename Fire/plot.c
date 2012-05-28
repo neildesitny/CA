@@ -5,9 +5,9 @@
 
 #include "fire.h"
 
-void plot(FILE* pipe, int** map, int width, int height){
+void plot(FILE* pipe, int** map, int width, int height,int* count){
 	//start to plot
-	fprintf(pipe, "plot '-' matrix title 'CA Model' with image\n");
+	fprintf(pipe, "plot '-' matrix title 'Frame:%d' with image\n",*count);
 	
 		for(int i=0;i<width;i++){
 			for(int j=0;j<height;j++){

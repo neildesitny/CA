@@ -33,7 +33,7 @@
 /*
 	a function using gnuplot to visualize simulation data
 */
-		void plot(FILE* pipe, int** map, int width, int height);
+		void plot(FILE* pipe, int** map, int width, int height, int* count);
 
 /*
  	a function to simulate the forest fire model process.

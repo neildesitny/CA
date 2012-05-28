@@ -5,10 +5,11 @@
 #include "fire.h"
 
 void simulate(int width, int height, double probability, double prob_to_tree, double prob_lightning){
-
+	
 	// a map with width*height sites
 	int** map =(int**) malloc(width*sizeof(int*));
 	int** new_map = (int**)malloc(width*sizeof(int*));
+	int		count =0;
 
 	FILE* pipe = popen("gnuplot -persist","w");	
 
@@ -36,17 +37,17 @@ void simulate(int width, int height, double probability, double prob_to_tree, do
 			}
 		}
 	}
-	
+
 	//simulation display starts here
 	while(true){
 		
 		//visualize the process by calling gnuplot
-		plot(pipe,map, width, height);
-		
+		plot(pipe,map, width, height, &count);
+		count ++;	
 		//update the map
 		update_map(map, new_map, width, height, prob_to_tree, prob_lightning);
 		
 		//a function to control the simulation speed by modifing the parameter
-		usleep(1000000);
+		usleep(100000);
 	}
 }
