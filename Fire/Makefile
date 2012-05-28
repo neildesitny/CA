@@ -9,7 +9,6 @@ OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o
 
 build:	$(OBJ)
 	$(CC) $(OBJ) $(TAG) fire
-#if [ -d ./Library ] && [ -e ./Library ]; then rm -rf Library; else mkdir -p Library;mv *.o *.h.gch Library/; fi;  
 
 fire.o: fire.c fire.h
 	$(CC) fire.c fire.h $(TAGC) 
@@ -28,9 +27,6 @@ plot.o: plot.c fire.h
 
 simulate.o: simulate.c fire.h
 	$(CC) simulate.c fire.h $(TAGC)
-
-#clean:
-#	rm -r Library fire
 
 clean:	
 	rm *.o  fire.h.gch fire
