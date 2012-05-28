@@ -4,7 +4,6 @@ set palette model RGB defined(0 'black',0.99 'black',1 'green',1.99 'green',2 'r
 set cbrange[0:2.99]
 set cbtics("Empty" 0, "Tree" 1,"Burning" 2) offset 0,2
 set title"My Cellular Automaton"
-set timestamp
 set key at graph 1,1 bottom right reverse
 
 set xtics out -200,10,200

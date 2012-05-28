@@ -1,6 +1,5 @@
 /*
  	a function to simulate the forest fire model process.
-  this function invokes all the functions above.
 */
 
 #include "fire.h"

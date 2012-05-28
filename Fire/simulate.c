@@ -9,7 +9,7 @@ void simulate(int width, int height, double probability, double prob_to_tree, do
 	// a map with width*height sites
 	int** map =(int**) malloc(width*sizeof(int*));
 	int** new_map = (int**)malloc(width*sizeof(int*));
-	int		count =0;
+	int		count =0; // a counter for show time steps
 
 	FILE* pipe = popen("gnuplot -persist","w");	
 
