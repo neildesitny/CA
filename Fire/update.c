@@ -7,14 +7,14 @@
 
 #include "fire.h"
 
-void update_map(int** map, int** new_map, int width,int height, double prob_to_tree, double prob_lightning){
+void update_map(int** map, int** new_map, int width,int height, double prob_to_tree, double prob_lightning,int* num_growing_tree, int* num_burnt_tree){
 	
 	//check the state of each site after one time step
 	for(int i=0;i<width;i++){
 		for(int j=0;j<height;j++){
 			switch(map[i][j]){
-				case empty:	if(prob(prob_to_tree)){new_map[i][j] = tree;}break;
-				case burning: new_map[i][j] = empty; break;
+				case empty:	if(prob(prob_to_tree)){new_map[i][j] = tree;*num_growing_tree += 1;}break;
+				case burning: new_map[i][j] = empty;*num_burnt_tree +=1; break;
 				default:
 					//use periodic boundary conditions and the neighbourhood is Von Neumann neighbourhood without central site
 					if(map[i>0?i-1:width-1][j] == burning||

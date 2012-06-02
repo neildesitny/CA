@@ -28,12 +28,12 @@
   f stands for the probability that a tree becomes burning because of
   lightning
 */
-		void update_map(int** map, int** new_map, int width, int height, double prob_to_tree, double prob_lightning);
+		void update_map(int** map, int** new_map, int width, int height, double prob_to_tree, double prob_lightning,int* num_growing_tree, int* num_burnt_tree);
 
 /*
 	a function using gnuplot to visualize simulation data
 */
-		void plot(FILE* pipe, int** map, int width, int height, int* count, double ratio);
+		void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height, int* count, double ratio,int num_growing_tree,int num_burnt_tree);
 
 /*
  	a function to simulate the forest fire model process.
