@@ -4,14 +4,14 @@
 
 #include "fire.h"
 
-void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,int count,double ratio, num_tracker* tracker){
+void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,int count,double ratio, num_tracker tracker){
 
 	//track the number of growing and burnt trees to show the steady state
 	fprintf(fp,"%d %lf %lf %lf %lf\n",count, 
-			(double)tracker->num_growing_tree,
-			(double)tracker->num_burning_tree,
-			(double)tracker->num_total_tree,
-			(double)tracker->num_total_fire);
+			(double)tracker.num_growing_tree,
+			(double)tracker.num_burning_tree,
+			(double)tracker.num_total_tree,
+			(double)tracker.num_total_fire);
 
 	//	fprintf(pipe1, "plot 'data' using 1:($3/%d) t 'burning tree' w l, 'data' using 1:($2/%d) t 'growing tree' w l\n", width*height, width*height);
 

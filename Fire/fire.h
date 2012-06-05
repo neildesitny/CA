@@ -61,7 +61,7 @@ void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, do
 /*
 	 a function using gnuplot to visualize simulation data
  */
-void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,int count,double ratio, num_tracker* tracker);
+void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,int count,double ratio, num_tracker tracker);
 
 /*
 	 a function to simulate the forest fire model process.

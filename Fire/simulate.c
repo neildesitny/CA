@@ -64,7 +64,7 @@ void simulate(dimension dim, probabilities prob){
 	}
 
 	//show the initial state of the map
-	plot(fp,pipe,pipe1,map, dim.width, dim.height,count,ratio,&tracker);
+	plot(fp,pipe,pipe1,map, dim.width, dim.height,count,ratio,tracker);
 
 	printf("do you want to simulate right now?(y/n)");
 	scanf("%c",&answer);
@@ -79,7 +79,7 @@ void simulate(dimension dim, probabilities prob){
 			update_map(map, new_map, dim, prob.prob_to_tree, prob.prob_lightning,&tracker);
 
 			//visualize the process by calling gnuplot
-			plot(fp,pipe,pipe1,map, dim.width, dim.height,count,ratio,&tracker);
+			plot(fp,pipe,pipe1,map, dim.width, dim.height,count,ratio,tracker);
 
 			tracker.num_growing_tree = 0;
 			tracker.num_burning_tree = 0;
