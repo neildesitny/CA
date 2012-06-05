@@ -10,7 +10,7 @@ OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o
 build:	$(OBJ)
 	$(CC) $(OBJ) $(TAG) fire
 
-fire.o: fire.c fire.h
+fire.o: fire.c fire.h 
 	$(CC) fire.c fire.h $(TAGC) 
 
 init.o: init.c fire.h
