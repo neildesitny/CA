@@ -4,7 +4,7 @@
 
 #include "fire.h"
 
-void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,int count,double ratio, num_tracker tracker){
+void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, dimension dim,int count,double ratio, num_tracker tracker){
 
 	//track the number of growing and burnt trees to show the steady state
 	fprintf(fp,"%d %lf %lf %lf %lf\n",count, 
@@ -23,8 +23,8 @@ void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,in
 	//visualization of the forest fire model
 	fprintf(pipe, "plot '-' matrix title 'f/p = %lf Frame:%d' with image\n",ratio,count);
 
-	for(int i=0;i<width;i++){
-		for(int j=0;j<height;j++){
+	for(int i=0;i<dim.width;i++){
+		for(int j=0;j<dim.height;j++){
 			fprintf(pipe, "%d ",map[i][j]);
 		}
 		fprintf(pipe,"\n");

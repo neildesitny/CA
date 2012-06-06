@@ -1,15 +1,16 @@
 #include "fire.h"
 
 int main(int argc, char** argv){
-	//int 		width, height;
-	//double	probability, prob_to_tree, prob_lightning;
-	dimension	dim;
-	probabilities	prob;
+	
+	dimension	dim; // store the dimension
+
+	probabilities	prob; // store all the probabilities
 	
 	// check whether all required data are entered
 	if(argc!=6){
 		printf("usage of this program\n");
 		printf("./fire [width] [height] [tree_probability] [prob_to_tree] [prob_lightning]\n");
+		printf("to exit, just press ctrl-c\n");
 		printf("\n");
 		exit(1);
 	} else{
@@ -20,10 +21,12 @@ int main(int argc, char** argv){
 		prob.prob_lightning = atof(argv[5]);		
 	}
 
-	//srand(time(NULL));
+	// if needed, comment this to get reproduceable results, while 
+	// not recommended
+	srand(time(NULL));
 
-	// start to running the simulation
-//	simulate(width,height,probability,prob_to_tree,prob_lightning);
+	// start the simulation
 	simulate(dim,prob);
+
 	return 0;
 }

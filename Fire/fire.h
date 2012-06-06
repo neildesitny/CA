@@ -17,9 +17,9 @@ typedef struct{
    a structure to store probabilities
  */
 typedef struct{
-	double  prob_init_tree; 
-	double 	prob_to_tree;
-	double  prob_lightning;
+	double  prob_init_tree; // the probability of a site is a tree initially 
+	double 	prob_to_tree;   // probability that an empty site becomes a tree 
+	double  prob_lightning; //probability that a tree is ignited by lightning
 }probabilities;
 
 /*
@@ -48,7 +48,6 @@ bool prob(double x);
 	 a function to initialize a map with width * height sites,
 	 and certain probability of a site is occupied by a tree
  */
-//void init_map(int** map, int** new_map, int width, int height, double probability,int* num_total_tree);
 void init_map(int** map, int** new_map, dimension dim, double probability,num_tracker* tracker);
 
 /*
@@ -61,7 +60,7 @@ void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, do
 /*
 	 a function using gnuplot to visualize simulation data
  */
-void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, int width, int height,int count,double ratio, num_tracker tracker);
+void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, dimension dim,int count,double ratio, num_tracker tracker);
 
 /*
 	 a function to simulate the forest fire model process.
