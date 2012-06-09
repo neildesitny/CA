@@ -2,7 +2,7 @@
  	update the state of each site with probability of prob_to_tree 
 	and prob_lightning 
 
-  prob_to_tree stands for the probability that an empty iste becomes tree 
+  prob_to_tree stands for the probability that an empty becomes tree 
 
   prob_lightning stands for the probability that a tree becomes burning 
 	because of lightning
@@ -15,7 +15,7 @@ void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, do
 	for(int i=0;i<dim.width;i++){
 		for(int j=0;j<dim.height;j++){
 			switch(map[i][j]){
-				case empty: case ash:	
+				case empty: 	
 					if(prob(prob_to_tree)){
 						new_map[i][j] = tree;
 						tracker->num_growing_tree += 1;
@@ -23,13 +23,12 @@ void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, do
 					break;
 
 				case burning: 
-					new_map[i][j] = ash;
+					new_map[i][j] = empty;
 					tracker->num_burning_tree += 1;
-					//tracker->num_total_fire += 1;
 					break;
 
 				default:
-					//tracker->num_total_tree += 1;
+					tracker->num_total_tree += 1;
 
 					//periodic boundary conditions and Von Neumann neighbourhood 
 					if(map[i>0?i-1:dim.width-1][j] == burning||

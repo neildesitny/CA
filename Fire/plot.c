@@ -1,27 +1,36 @@
 /*
-	 a function to simulate the forest fire model process.
+	 a function to visualize the forest fire model process.
  */
 
 #include "fire.h"
 
 void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, dimension dim,int count,double ratio, num_tracker tracker){
 
-	//track the number of growing and burnt trees to show the steady state
-	fprintf(fp,"%d %lf %lf %lf %lf\n",count, 
+	int		map_size = dim.width * dim.height;
+
+	// track status of the forest 
+	fprintf(fp,"%d %.1lf %.1lf %.1lf\n",count, 
 			(double)tracker.num_growing_tree,
 			(double)tracker.num_burning_tree,
-			(double)tracker.num_total_tree,
-			(double)tracker.num_total_fire);
-
-	//	fprintf(pipe1, "plot 'data' using 1:($3/%d) t 'burning tree' w l, 'data' using 1:($2/%d) t 'growing tree' w l\n", width*height, width*height);
-
-	fprintf(pipe1, "plot 'data' using 1:3 t 'burning trees' w l, 'data' using 1:2 t 'growing trees' w l\n");
+			(double)tracker.num_total_tree);
 
 	fflush(fp);
+
+	// track the density
+	fprintf(pipe1, 
+			"set multiplot layout 2,1\n set title 'density'\n plot 'data' using 1:($3/%d) t 'burning tree' w l,\
+			'data' using 1:($4/%d) t 'total tree' w l,\
+			'data' using 1:(1.0-($3+$4)/%d) t 'empty' w l\n", 
+			map_size, map_size, map_size);
+
+	// track the number of growing trees and burnt trees in steady state
+		fprintf(pipe1, "set title 'number'\n plot 'data' using 1:3 t 'burning trees' w l, 'data' using 1:2 t 'growing trees' w l\n unset multiplot\n");
+
 	fflush(pipe1);
 
 	//visualization of the forest fire model
-	fprintf(pipe, "plot '-' matrix title 'f/p = %lf Frame:%d' with image\n",ratio,count);
+	fprintf(pipe, "plot '-' matrix title 'f/p = %lf Frame:%d' with image\n",
+			ratio,count);
 
 	for(int i=0;i<dim.width;i++){
 		for(int j=0;j<dim.height;j++){

@@ -4,6 +4,20 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+//#include <assert.h>
+
+
+//int uf_find(int x);
+//int uf_union(int x, int y);
+//int uf_make_set(void);
+//void uf_initialize(int max_labels);
+//void uf_done(void);
+//void print_matrix(int **matrix, int m, int n);
+//int hoshen_kopelman(int **matrix, int m, int n);
+//void check_labelling(int **matrix, int m, int n);
+//
+//#define max(a,b) (a>b?a:b)
+//#define min(a,b) (a>b?b:a)
 
 /*
 	 a structure to store width and height of the forest lattice
@@ -29,15 +43,13 @@ typedef struct{
  	int		num_growing_tree; 
 	int		num_burning_tree;
 	int		num_total_tree;
-	int		num_total_fire;
  }num_tracker;
 
 /*
 	 all the possible states of a site.
 	 a site can be empty, occupied by a green tree or a burning tree.
-	 ash is equal to empty, it is used to track the burnt site
  */
-enum {empty = 0, tree = 1, burning = 2,ash = 3};
+enum {empty = 0, tree = 1, burning = 2};
 
 /*
 	 a function to simulate probability, if successful, return true

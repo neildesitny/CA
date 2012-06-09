@@ -5,7 +5,7 @@
 CC		=			gcc
 TAG		=			-std=c99 -o
 TAGC	=			-std=c99 -c
-OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o
+OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o #hk.o
 
 build:	$(OBJ)
 	$(CC) $(OBJ) $(TAG) fire
@@ -21,12 +21,15 @@ prob.o: prob.c fire.h
 
 update.o: update.c fire.h
 	$(CC) update.c fire.h $(TAGC)
-	
+
 plot.o: plot.c fire.h
 	$(CC) plot.c fire.h $(TAGC)
 
 simulate.o: simulate.c fire.h
 	$(CC) simulate.c fire.h $(TAGC)
+
+#hk.o: hk.c fire.h
+#	$(CC) hk.c fire.h $(TAGC)
 
 clean:	
 	rm *.o  fire.h.gch fire

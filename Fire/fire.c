@@ -1,11 +1,11 @@
 #include "fire.h"
 
 int main(int argc, char** argv){
-	
-	dimension	dim; // store the dimension
 
-	probabilities	prob; // store all the probabilities
-	
+	dimension	dim;   		// store the width and height  
+
+	probabilities	prob; // store all required probabilities
+
 	// check whether all required data are entered
 	if(argc!=6){
 		printf("usage of this program\n");
@@ -21,8 +21,7 @@ int main(int argc, char** argv){
 		prob.prob_lightning = atof(argv[5]);		
 	}
 
-	// if needed, comment this to get reproduceable results, while 
-	// not recommended
+	// if needed, comment this to get reproduceable results 
 	srand(time(NULL));
 
 	// start the simulation

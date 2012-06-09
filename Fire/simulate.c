@@ -1,23 +1,26 @@
 /*
-	 a function to simulate the forest fire model process.
-	 this function invokes functions like init_map(), update_map() and prob().
+	 a function to simulate the forest fire model process:
+
+ 	 		initialize the map -> update the map -> plot
+ 														 \------------------/
+																		loop
  */
+
 #include "fire.h"
 
 void simulate(dimension dim, probabilities prob){	
 
-	char answer;
+	char 	answer;
 	int		count =0; // a counter for showing time steps
 
-	int** map =(int**) malloc(dim.width*sizeof(int*));
-	int** new_map = (int**)malloc(dim.width*sizeof(int*));
+	int** map =(int**) malloc(dim.width*sizeof(int*)); // map of forest
+	int** new_map = (int**)malloc(dim.width*sizeof(int*)); 
 
 	num_tracker tracker;
 
 	tracker.num_growing_tree = 0;
 	tracker.num_burning_tree = 0;
 	tracker.num_total_tree = 0;
-	tracker.num_total_fire = 0;
 
 	FILE* fp = fopen("data","w");
 	FILE* pipe = popen("gnuplot -persist","w");	
@@ -32,7 +35,7 @@ void simulate(dimension dim, probabilities prob){
 		exit(1);
 	}
 
-	// load configuration for gnuplot
+	// load configurations for gnuplot
 	fprintf(pipe1,"load 'set_1.gp'\n");
 	fprintf(pipe, "load 'set.gp'\n");
 
@@ -43,7 +46,7 @@ void simulate(dimension dim, probabilities prob){
 
 	double ratio = prob.prob_lightning/prob.prob_to_tree;
 
-	//initialize tha map before simulation
+	//initialize the map  
 	init_map(map, new_map, dim, prob.prob_init_tree,&tracker);
 
 	//if prob_lightning = 0, then set a fire in the centre of the map
@@ -59,6 +62,8 @@ void simulate(dimension dim, probabilities prob){
 		printf("%d %d\n", tracker.num_total_tree, tracker.num_burning_tree);
 	}
 
+	 //int number = hoshen_kopelman(map,dim.width,dim.height);
+	 //printf("%d\n",number);
 	//show the initial state of the map
 	plot(fp,pipe,pipe1,map, dim, count,ratio,tracker);
 
@@ -79,6 +84,7 @@ void simulate(dimension dim, probabilities prob){
 
 			tracker.num_growing_tree = 0;
 			tracker.num_burning_tree = 0;
+			tracker.num_total_tree = 0;
 
 			//uncomment to control the simulation speed 
 			//usleep(1000000);
