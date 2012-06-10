@@ -16,15 +16,22 @@ void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, dimension dim,int count,
 
 	fflush(fp);
 
-	// track the density
+	// track the density of tree, empty site and fire
 	fprintf(pipe1, 
-			"set multiplot layout 2,1\n set title 'density'\n plot 'data' using 1:($3/%d) t 'burning tree' w l,\
+			"set multiplot layout 2,1\n \
+			set title 'density'\n \
+			set ylabel 'density'\n \
+			plot 'data' using 1:($3/%d) t 'burning tree' w l,\
 			'data' using 1:($4/%d) t 'total tree' w l,\
 			'data' using 1:(1.0-($3+$4)/%d) t 'empty' w l\n", 
 			map_size, map_size, map_size);
 
 	// track the number of growing trees and burnt trees in steady state
-		fprintf(pipe1, "set title 'number'\n plot 'data' using 1:3 t 'burning trees' w l, 'data' using 1:2 t 'growing trees' w l\n unset multiplot\n");
+	fprintf(pipe1, "set title 'number'\n 
+			set ylabel 'number'\n \
+			plot 'data' using 1:3 t 'burning trees' w l, \
+			'data' using 1:2 t 'growing trees' w l\n \
+			unset multiplot\n");
 
 	fflush(pipe1);
 

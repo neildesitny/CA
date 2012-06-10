@@ -62,8 +62,6 @@ void simulate(dimension dim, probabilities prob){
 		printf("%d %d\n", tracker.num_total_tree, tracker.num_burning_tree);
 	}
 
-	 //int number = hoshen_kopelman(map,dim.width,dim.height);
-	 //printf("%d\n",number);
 	//show the initial state of the map
 	plot(fp,pipe,pipe1,map, dim, count,ratio,tracker);
 
