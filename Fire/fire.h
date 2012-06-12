@@ -4,20 +4,6 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-//#include <assert.h>
-
-
-//int uf_find(int x);
-//int uf_union(int x, int y);
-//int uf_make_set(void);
-//void uf_initialize(int max_labels);
-//void uf_done(void);
-//void print_matrix(int **matrix, int m, int n);
-//int hoshen_kopelman(int **matrix, int m, int n);
-//void check_labelling(int **matrix, int m, int n);
-//
-//#define max(a,b) (a>b?a:b)
-//#define min(a,b) (a>b?b:a)
 
 /*
 	 a structure to store width and height of the forest lattice
@@ -48,8 +34,9 @@ typedef struct{
 /*
 	 all the possible states of a site.
 	 a site can be empty, occupied by a green tree or a burning tree.
+	 ash is used to track the trajectory of the fire in percolation simulation. 
  */
-enum {empty = 0, tree = 1, burning = 2};
+enum {empty = 0, tree = 1, burning = 2, ash = 3};
 
 /*
 	 a function to simulate probability, if successful, return true
@@ -72,7 +59,7 @@ void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, do
 /*
 	 a function using gnuplot to visualize simulation data
  */
-void plot(FILE* fp, FILE* pipe, FILE* pipe1, int** map, dimension dim,int count,double ratio, num_tracker tracker);
+void plot(FILE* fp, FILE* pipe, FILE* pipe_1, int** map, dimension dim,int count,double ratio, num_tracker tracker);
 
 /*
 	 a function to simulate the forest fire model process.
