@@ -28,8 +28,5 @@ plot.o: plot.c fire.h
 simulate.o: simulate.c fire.h
 	$(CC) simulate.c fire.h $(TAGC)
 
-#hk.o: hk.c fire.h
-#	$(CC) hk.c fire.h $(TAGC)
-
 clean:	
 	rm *.o  fire.h.gch fire
