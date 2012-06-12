@@ -1,3 +1,11 @@
+// 
+//  fire.h
+//  Fire
+//  
+//  Created by JINANG LU on 2012-06-12.
+//  Copyright 2012 __Computer Science of UWA__. All rights reserved.
+// 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
