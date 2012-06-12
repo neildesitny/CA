@@ -90,6 +90,7 @@ void simulate(dimension dim, probabilities prob){
 			//visualize the process by calling gnuplot
 			plot(fp,pipe,pipe_1,map, dim, count,ratio,tracker);
 
+
 			//uncomment to control the simulation speed 
 			//usleep(1000000);
 		}
