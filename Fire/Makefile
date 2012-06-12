@@ -5,7 +5,7 @@
 CC		=			gcc
 TAG		=			-std=c99 -o
 TAGC	=			-std=c99 -c
-OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o #hk.o
+OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o 
 
 build:	$(OBJ)
 	$(CC) $(OBJ) $(TAG) fire
